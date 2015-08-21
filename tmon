@@ -1,0 +1,23 @@
+DIR_NAME="local.Urbania.dev"
+SLUG="$(echo -n "${DIR_NAME}" | sed -e 's/[^[:alnum:]]//g' \
+| tr -s '-' | tr A-Z a-z)"
+
+NOMSESS="tmon"
+
+
+CNT="docker exec -ti $SLUG_files_1 bash"
+echo "$CNT"
+tmux has-session -t $NOMSESS
+if [ $? != 0  ]; then
+    #Ventana 1 | 2 Panes
+    tmux new -s $NOMSESS -n 'PHP & GULP' -d
+    #tmux send-keys -t $NOMSESS 'eval' C-m
+    tmux split-window -v -t $NOMSESS
+    #tmux send-keys -t $NOMSESS 'eval' C-m
+
+    #Ventana 2 | Full Editor
+    tmux new-window -t $NOMSESS -n Monitor
+    tmux send-keys -t $NOMSESS 'docker-compose up' C-m
+fi
+tmux attach -t $NOMSESS
+tmux select-window -t 1

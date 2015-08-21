@@ -1,0 +1,16 @@
+web:
+  build: .
+  ports: 
+    - "22:22"
+    - "80:80"
+    - "3306:3306"
+  volumes:
+    - ./proyectos:/var/www/:rw          
+files:
+  build: .        
+  environment:
+    DEV_USER: edgar          
+    DEV_GROUP: edgar          
+  volumes_from:
+    - "web"
+  command: monitor      

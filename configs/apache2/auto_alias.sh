@@ -14,7 +14,9 @@
 	cp /etc/apache2/sites-available/albatros.local.conf /etc/apache2/sites-available/$DOMAIN.conf
 	echo "Actualizando vhost para $DOMAIN"
 	sed -i s,albatros.local,$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
-	sed -i s,/var/www,/var/www/$DOMAIN/$DIRWEB,g /etc/apache2/sites-available/$DOMAIN.conf
+	echo "Set Dir vhost in $DOMAIN/$DIRWEB"
+	sed -i "s|{ROOT_PATH}|/var/www/$DOMAIN/$DIRWEB|g" /etc/apache2/sites-available/$DOMAIN.conf
+	cat /etc/apache2/sites-available/$DOMAIN.conf
 	echo "Enabling $DOMAIN"
 	a2ensite $DOMAIN.conf
 	echo "Restart Apache Now"

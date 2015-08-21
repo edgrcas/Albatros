@@ -52,6 +52,10 @@ RUN bash /mongo_driver.sh
 RUN apt-get install inotify-tools -y
 COPY configs/monitor.sh /monitor.sh
 RUN chmod +x /monitor.sh
+RUN mv monitor.sh /usr/local/bin/monitor
+
+#SET ServerName
+RUN echo "ServerName 'YourDomain.com'" >> /etc/apache2/apache2.conf
 
 #INSTALL APACHE AUTO-ALIAS
 COPY configs/apache2/auto_alias.sh /auto_alias.sh
@@ -59,6 +63,9 @@ COPY configs/apache2/domains.sh /domains.sh
 COPY configs/apache2/albatros.local.conf /etc/apache2/sites-available/albatros.local.conf
 RUN chmod +x /domains.sh /auto_alias.sh
 RUN bash /auto_alias.sh
+
+#SET TERMINAL
+ENV TERM dumb
 
 VOLUME /var/www/html
 EXPOSE 22 80 3306 27017
