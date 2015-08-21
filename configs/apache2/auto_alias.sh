@@ -13,7 +13,7 @@
 	echo "Creando configuracion vhost para $DOMAIN"
 	cp /etc/apache2/sites-available/albatros.local.conf /etc/apache2/sites-available/$DOMAIN.conf
 	echo "Actualizando vhost para $DOMAIN"
-	sed -i s,albatros.local,$DOMAIN,g /etc/apache2/sites-available/$DOMAIN.conf
+	sed -i s|albatros.local|$DOMAIN|g /etc/apache2/sites-available/$DOMAIN.conf
 	echo "Set Dir vhost in $DOMAIN/$DIRWEB"
 	sed -i "s|{ROOT_PATH}|/var/www/$DOMAIN/$DIRWEB|g" /etc/apache2/sites-available/$DOMAIN.conf
 	cat /etc/apache2/sites-available/$DOMAIN.conf
