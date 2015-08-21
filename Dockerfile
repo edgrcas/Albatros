@@ -101,9 +101,12 @@ RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016
 ENV MONGO_MAJOR 3.0
 ENV MONGO_VERSION 3.0.4
 RUN echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
+
+RUN apt-get clean
+RUN rm -rf /var/cache/apt/*
 RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update
 RUN set -x \
-    && apt-get update \
     && apt-get install -y \
     mongodb-org=$MONGO_VERSION \
     mongodb-org-server=$MONGO_VERSION \
