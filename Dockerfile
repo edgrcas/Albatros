@@ -38,18 +38,27 @@ RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db
 VOLUME /data/db
 
 COPY configs/mongo/mongo_entrypoint.sh /mongo_entrypoint.sh
+RUN apt-get upgrade && apt-get update
 
 #UPDATE COMPOSER
 RUN composer self-update
 
 #INSTALL MONGO DRIVER 3
 COPY configs/mongo/mongo_driver.sh /mongo_driver.sh
-RUN /mongo_driver.sh
+RUN chmod +x /mongo_driver.sh
+RUN bash /mongo_driver.sh
 
 #INSTALL MONITOR FILES
-RUN apt-get install inotify-tools
+RUN apt-get install inotify-tools -y
 COPY configs/monitor.sh /monitor.sh
 RUN chmod +x /monitor.sh
+
+#INSTALL APACHE AUTO-ALIAS
+COPY configs/apache2/auto_alias.sh /auto_alias.sh
+COPY configs/apache2/domains.sh /domains.sh
+COPY configs/apache2/albatros.local.conf /etc/apache2/sites-available/albatros.local.conf
+RUN chmod +x /domains.sh /auto_alias.sh
+RUN bash /auto_alias.sh
 
 VOLUME /var/www/html
 EXPOSE 22 80 3306 27017

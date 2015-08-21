@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-apt-get install php-pear --y
+apt-get install php5-cli -y
+apt-get install php5-dev -y
+apt-get install php-pear -y
 pecl install mongo
 touch /etc/php5/cli/mongo.ini
 echo 'extension=mongo.so' >> /etc/php5/cli/mongo.ini
