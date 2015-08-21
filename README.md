@@ -19,3 +19,12 @@ chmod +x /usr/local/bin/docker-compose
 exit
 docker-compose --version
 ```
+
+## Run
+Run the image, binding associated ports, and mounting the present working directory:
+```
+docker run -p 8000:80 -p 2200:22 -p 3306:3306 -v $(pwd):/var/www/html:rw edaniel15/albatros
+```
+## Services
+### MySQL
+Connect on localhost:3306, **user** root, **password** root.
