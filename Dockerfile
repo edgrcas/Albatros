@@ -64,6 +64,11 @@ RUN apt-get install -y nodejs && \
     npm --version && \
     npm install -g coffee-script bower grunt-cli gulp component yo eslint
 
+#INSTALL ADDONS NODE
+COPY configs/node/install_phantomjs.sh /install_phantomjs.sh
+RUN chmod +x /install_phantomjs.sh
+RUN bash /install_phantomjs.sh
+
 #UTILS
 RUN apt-get install -y mysql-client unzip
 

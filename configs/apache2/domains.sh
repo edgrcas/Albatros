@@ -1,1 +1,1 @@
-DOMAINS=('local.urbania.ec:src/public', 'local.albatros.dev:public/web')
+DOMAINS=('local.urbania.ec:src/public' 'local.albatros.dev:public/web')
