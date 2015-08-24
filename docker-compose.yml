@@ -8,10 +8,10 @@ web:
     - ./proyectos:/var/www/:rw
   command: supervisord
 files:
-  build: .        
+  build: .
   environment:
-    DEV_USER: edgar          
-    DEV_GROUP: edgar          
+    DEV_USER: edgar
+    DEV_GROUP: edgar
   volumes_from:
     - "web"
-  command: monitor      
+  command: monitor

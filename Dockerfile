@@ -69,6 +69,9 @@ COPY configs/node/install_phantomjs.sh /install_phantomjs.sh
 RUN chmod +x /install_phantomjs.sh
 RUN bash /install_phantomjs.sh
 
+COPY configs/node/dependencies.sh /usr/bin/npm_dependencies
+RUN chmod +x /usr/bin/npm_dependencies
+
 #UTILS
 RUN apt-get install -y mysql-client unzip
 

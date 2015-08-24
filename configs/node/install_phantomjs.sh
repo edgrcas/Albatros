@@ -12,8 +12,8 @@ else
     echo "> realizando wget del empaquetado del instalador"
     wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
 
-    #echo "> extrayendo el instalador"
-    #tar jxvf /phantomjs-1.9.8-linux-x86_64.tar.bz2
+    echo "> extrayendo el instalador"
+    tar jxvf phantomjs-1.9.8-linux-x86_64.tar.bz2
 
     echo "> creado los accesos directos"
     ln -s /usr/local/share/phantomjs-1.9.8-linux-x86_64/ /usr/local/share/phantomjs
