@@ -113,6 +113,6 @@ RUN apt-get clean && apt-get autoremove
 
 #SET TERMINAL
 ENV TERM dumb
-
+CMD ["supervisord"]
 VOLUME /var/www/html
 EXPOSE 22 80 3306
