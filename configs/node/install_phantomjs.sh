@@ -10,7 +10,7 @@ else
     cd /usr/local/share/
 
     echo "> realizando wget del empaquetado del instalador"
-    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2
+    wget https://repo1.maven.org/maven2/com/github/klieber/phantomjs/1.9.8/phantomjs-1.9.8-linux-x86_64.tar.bz2
 
     echo "> extrayendo el instalador"
     tar jxvf phantomjs-1.9.8-linux-x86_64.tar.bz2

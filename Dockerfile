@@ -96,7 +96,6 @@ RUN chmod +x /mongo_driver.sh
 RUN bash /mongo_driver.sh
 
 #INSTALL MONITOR FILES
-RUN apt-get install inotify-tools -y
 COPY configs/monitor.sh /monitor.sh
 RUN chmod +x /monitor.sh
 RUN mv monitor.sh /usr/local/bin/monitor
@@ -118,4 +117,5 @@ RUN apt-get clean && apt-get autoremove
 ENV TERM dumb
 CMD ["supervisord"]
 VOLUME /var/www/html
+WORKDIR /var/www
 EXPOSE 22 80 3306
