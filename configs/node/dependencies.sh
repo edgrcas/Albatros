@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/www
+FRONTEND_DIR="/var/www"
 
 if [ -d "$FRONTEND_DIR" ]; then
 
@@ -52,6 +52,7 @@ if [ -d "$FRONTEND_DIR" ]; then
             lodash \
             node-notifier \
             phantomjssmith \
+            gulp-concat \
             run-sequence
         )
 
