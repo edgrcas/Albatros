@@ -1,16 +1,15 @@
 # Albatros
-Docker Lammp
+Docker Lamp
 
 ##Features
+Base Image: **Ubuntu:15**
 |Package           | Version                        | 
  ----------------- | ---------------------------- | 
 | Supervisor | `3.0`            | 
-| iNotify-tools | `3.14`            | 
 | Apache | `2.4.10 (Ubuntu)`            | 
-| PHP | `5.5`            | 
+| PHP | `5.6`            | 
 | Composer | `1.0-dev`         | 
 | Sass | `3.4.15`         | 
-| Mongo           | `3.0.4`            |
 | Mongo Drive     | `1.6.10`            |
 | MySQL           | `5.6.24, for debian-linux-gnu (x86_64)` | 
 | PhpMyAdmin      | `4.2.12deb2` | 
