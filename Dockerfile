@@ -15,7 +15,7 @@ ADD configs/supervisor/supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 # INSTALL Apache2
 ADD configs/apache2/apache2-service.sh /apache2-service.sh
 RUN apt-get install -y apache2 && \
-  chmod +x /*.sh && \
+    chmod +x /*.sh && \
     a2enmod rewrite
 ADD configs/apache2/apache_default /etc/apache2/sites-available/000-default.conf
 ADD configs/apache2/supervisor.conf /etc/supervisor/conf.d/apache2.conf
@@ -29,11 +29,8 @@ RUN chmod +x /autoload_aliases.sh
 RUN apt-get install -y software-properties-common wget \
     git && \
     git --version
-#    hg --version && \
-#    svn --version
 
 #INSTALL PHP
-
 RUN apt-get install -y php-pear php5-cgi php5-json php5-cli php5-curl curl \
     php5-mcrypt php5-xdebug mcrypt libmcrypt-dev php5-mysql php5-gd php5-sqlite \
     sqlite && \
@@ -93,7 +90,6 @@ RUN chmod 755 /etc/phpmyadmin/conf.d/config.inc.php
 ADD configs/phpmyadmin/phpmyadmin-setup.sh /phpmyadmin-setup.sh
 RUN chmod +x /phpmyadmin-setup.sh
 RUN /phpmyadmin-setup.sh
-#RUN apt-get upgrade && apt-get update
 
 #INSTALL MONGO DRIVER 3
 COPY configs/mongo/mongo_driver.sh /mongo_driver.sh
@@ -113,7 +109,7 @@ RUN apt-get clean && apt-get autoremove
 
 #SET TERMINAL
 ENV TERM xterm
-CMD ["supervisord"]
+CMD bash /autoload_aliases.sh && supervisord
 VOLUME /var/www/html
 WORKDIR /var/www
 EXPOSE 22 80 3306

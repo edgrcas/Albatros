@@ -1,12 +1,12 @@
 web:
   build: .
-  ports: 
+  ports:
     - "22:22"
     - "80:80"
     - "3306:3306"
   volumes:
     - ./proyectos:/var/www/:rw
-  command: supervisord
+    - ./configs/domain_configs:/domain_configs
 files:
   build: .
   environment:

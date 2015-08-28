@@ -16,6 +16,4 @@ if [ -d "$DIRECTORY_CONFIG"  ]; then
 	    a2ensite $PROYECT_NAME
         echo "%%%%%%%%%FINALIZADO%%%%%%%%%%%"
     done
-	echo "Restart APACHE2 #######"
-	service apache2 restart
 fi

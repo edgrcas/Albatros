@@ -4,7 +4,7 @@ Imagen LAMP para docker, contiene docker-compose.
 
 Features
 -------------
-Base Image: **Ubuntu:15**
+Base Image: **Ubuntu:14.04**
 
 - **Supervisor 3.0**, Sistema de control de procesos [+Info](http://supervisord.org/).
 - **Apache 2.4.10 (Ubuntu)**, Http Server [+Info](http://httpd.apache.org/).
