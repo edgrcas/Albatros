@@ -52,3 +52,6 @@ nb-configuration.xml
 
 #Ignore Proyectos
 proyectos
+
+#Ignore local Files
+*.local*
