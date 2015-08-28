@@ -8,15 +8,14 @@ Base Image: **Ubuntu:15**
 
 - **Supervisor 3.0**, Sistema de control de procesos [+Info](http://supervisord.org/).
 - **Apache 2.4.10 (Ubuntu)**, Http Server [+Info](http://httpd.apache.org/).
-- **PHP 5.6**, [+Info](http://php.net/downloads.php).
+- **PHP 5.5**, [+Info](http://php.net/downloads.php).
 - **Composer 1.0.0-alpha10**, [+Info](https://getcomposer.org/).
-- **Sass 3.4.15**, [+Info](http://sass-lang.com/).
 - **Mongo Drive 1.6.10**, [+info](http://docs.mongodb.org/ecosystem/drivers/).
 - **MySQL 5.6.24, for debian-linux-gnu (x86_64)**, [+Info](https://www.mysql.com/).
 - **PhpMyAdmin 4.2.12deb2**, MySql Administrador [+Info](https://www.phpmyadmin.net/).
 - **Node v0.12.5**, [+Info](http://blog.nodejs.org/2015/06/22/node-v0-12-5-stable/).
-- **npm 2.11.2**, [+Info](https://www.npmjs.com/).
-- **PhantomJS 1.9**, [+Info](http://phantomjs.org/download.html).
+- **npm v2.11.2**, [+Info](https://www.npmjs.com/).
+- **PhantomJS 1.8.9**, [+Info](http://phantomjs.org/download.html).
 - **Python 3.4.3**, [+info](https://www.python.org/).
 
 Docker Install

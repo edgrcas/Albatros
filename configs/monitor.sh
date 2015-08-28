@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Autor: Edgar Castanheda
 
 if [ $DEV_USER ]; then
 
@@ -29,6 +30,8 @@ if [ $DEV_USER ]; then
     previous_sha=$sha
 
     build() {
+
+        #if [[ $? != 0  ]]; then
         find $path -user root -type f -mmin -1 -printf 'FLE %Td %.8TT %f\n'
         find $path -user root -type d -mmin -1 -printf 'DIR %Td %.8TT %f\n'
         #Buscar Archivos
@@ -38,7 +41,6 @@ if [ $DEV_USER ]; then
         find $path -user root -type d -mmin -1 | tr "\n" " " | xargs -r chmod 755
         find $path -user root -type d -mmin -1 | tr "\n" " " | xargs -r chown $USER:$GROUP
 
-        message "#######DONE#######"
     }
 
     compare() {

@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:14.04
 MAINTAINER Edgar Castanheda <edgar.castaneda@clicksandbricks.pe>
 
 #UPDATE
@@ -20,12 +20,17 @@ RUN apt-get install -y apache2 && \
 ADD configs/apache2/apache_default /etc/apache2/sites-available/000-default.conf
 ADD configs/apache2/supervisor.conf /etc/supervisor/conf.d/apache2.conf
 
+#INSTALL APACHE AUTO-ALIAS
+COPY configs/domain_configs /domain_configs
+COPY configs/autoload_aliases.sh /autoload_aliases.sh
+RUN chmod +x /autoload_aliases.sh
+
 #INSTALL GIT
 RUN apt-get install -y software-properties-common wget \
-    git mercurial subversion && \
-    git --version && \
-    hg --version && \
-    svn --version
+    git && \
+    git --version
+#    hg --version && \
+#    svn --version
 
 #INSTALL PHP
 
@@ -62,7 +67,7 @@ RUN apt-get install -y build-essential && \
 RUN apt-get install -y nodejs && \
     nodejs --version && \
     npm --version && \
-    npm install -g coffee-script bower grunt-cli gulp component yo eslint
+    npm install -g coffee-script bower gulp
 
 #INSTALL ADDONS NODE
 COPY configs/node/install_phantomjs.sh /install_phantomjs.sh
@@ -88,7 +93,7 @@ RUN chmod 755 /etc/phpmyadmin/conf.d/config.inc.php
 ADD configs/phpmyadmin/phpmyadmin-setup.sh /phpmyadmin-setup.sh
 RUN chmod +x /phpmyadmin-setup.sh
 RUN /phpmyadmin-setup.sh
-RUN apt-get upgrade && apt-get update
+#RUN apt-get upgrade && apt-get update
 
 #INSTALL MONGO DRIVER 3
 COPY configs/mongo/mongo_driver.sh /mongo_driver.sh
@@ -103,18 +108,11 @@ RUN mv monitor.sh /usr/local/bin/monitor
 #SET ServerName
 RUN echo "ServerName 'YourDomain.com'" >> /etc/apache2/apache2.conf
 
-#INSTALL APACHE AUTO-ALIAS
-COPY configs/apache2/auto_alias.sh /auto_alias.sh
-COPY configs/apache2/domains.sh /domains.sh
-COPY configs/apache2/albatros.local.conf /etc/apache2/sites-available/albatros.local.conf
-RUN chmod +x /domains.sh /auto_alias.sh
-RUN bash /auto_alias.sh
-
 #CLEAN
 RUN apt-get clean && apt-get autoremove
 
 #SET TERMINAL
-ENV TERM dumb
+ENV TERM xterm
 CMD ["supervisord"]
 VOLUME /var/www/html
 WORKDIR /var/www
